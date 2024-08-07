@@ -1,14 +1,10 @@
 import styles from '../public/styles/ChatBox.module.css';
 
 const ChatMessage = ({ message }) => {
-    if (!message || !message.role) {
-        return null;
-    }
-    
-    const messageClass = message.role === 'user' ? styles.messageUser : styles.messageAssistant;
+    const messageClass = message.role === 'user' ? styles.userMessage : styles.assistantMessage;
 
     return (
-        <div className={messageClass}>
+        <div className={`${styles.message} ${messageClass}`}>
             <p>{message.content}</p>
         </div>
     );

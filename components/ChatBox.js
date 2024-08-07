@@ -24,8 +24,6 @@ const ChatBox = () => {
             });
 
             const data = await response.json();
-            console.log('Response from API:', data);
-
             if (data.reply) {
                 setMessages([...newMessages, data.reply]);
             } else {
@@ -37,21 +35,23 @@ const ChatBox = () => {
     };
 
     return (
-        <div className={styles.chatBox}>
-            <div className={styles.messages}>
+        <div className={styles.chatContainer}>
+            <div className={styles.messagesContainer}>
                 {messages.map((msg, index) => (
                     <ChatMessage key={index} message={msg} />
                 ))}
             </div>
-            <input
-                type="text"
-                className={styles.input}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                placeholder="Type your message..."
-            />
-            <button className={styles.button} onClick={sendMessage}>Send</button>
+            <div className={styles.inputContainer}>
+                <input
+                    type="text"
+                    className={styles.input}
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                    placeholder="Type your message..."
+                />
+                <button className={styles.sendButton} onClick={sendMessage}>Send</button>
+            </div>
         </div>
     );
 };
