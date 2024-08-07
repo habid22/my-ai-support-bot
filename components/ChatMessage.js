@@ -1,12 +1,25 @@
-import styles from '../public/styles/ChatBox.module.css';
+import React from 'react';
+import { Paper, Typography } from '@mui/material';
 
 const ChatMessage = ({ message }) => {
-    const messageClass = message.role === 'user' ? styles.userMessage : styles.assistantMessage;
+    const isUser = message.role === 'user';
 
     return (
-        <div className={`${styles.message} ${messageClass}`}>
-            <p>{message.content}</p>
-        </div>
+        <Paper 
+            elevation={3} 
+            sx={{ 
+                maxWidth: '80%', 
+                padding: 1, 
+                borderRadius: 2, 
+                backgroundColor: isUser ? '#007aff' : '#e5e5ea', 
+                color: isUser ? '#fff' : '#000',
+                alignSelf: isUser ? 'flex-end' : 'flex-start',
+                borderBottomRightRadius: isUser ? 0 : 2,
+                borderBottomLeftRadius: isUser ? 2 : 0
+            }}
+        >
+            <Typography variant="body1">{message.content}</Typography>
+        </Paper>
     );
 };
 

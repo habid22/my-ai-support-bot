@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Box, TextField, Button, List, ListItem, Paper, Typography } from '@mui/material';
 import ChatMessage from './ChatMessage';
-import styles from '../public/styles/ChatBox.module.css';
 
 const ChatBox = () => {
     const [messages, setMessages] = useState([]);
@@ -35,24 +35,42 @@ const ChatBox = () => {
     };
 
     return (
-        <div className={styles.chatContainer}>
-            <div className={styles.messagesContainer}>
+        <Box 
+            sx={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                height: '70vh', 
+                maxWidth: '600px', 
+                margin: '0 auto', 
+                border: 1, 
+                borderRadius: 2, 
+                overflow: 'hidden', 
+                backgroundColor: '#f5f5f5',
+                boxShadow: 3 
+            }}
+        >
+            <List sx={{ flex: 1, padding: 2, overflowY: 'scroll' }}>
                 {messages.map((msg, index) => (
-                    <ChatMessage key={index} message={msg} />
+                    <ListItem key={index} sx={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
+                        <ChatMessage message={msg} />
+                    </ListItem>
                 ))}
-            </div>
-            <div className={styles.inputContainer}>
-                <input
-                    type="text"
-                    className={styles.input}
+            </List>
+            <Box sx={{ display: 'flex', padding: 1, borderTop: 1, borderColor: '#ccc', backgroundColor: '#fff' }}>
+                <TextField
+                    variant="outlined"
+                    fullWidth
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                     placeholder="Type your message..."
+                    sx={{ marginRight: 1, borderRadius: 2 }}
                 />
-                <button className={styles.sendButton} onClick={sendMessage}>Send</button>
-            </div>
-        </div>
+                <Button variant="contained" color="primary" onClick={sendMessage} sx={{ borderRadius: 2 }}>
+                    Send
+                </Button>
+            </Box>
+        </Box>
     );
 };
 
