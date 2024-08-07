@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, List, ListItem } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 import ChatMessage from './ChatMessage';
 
 const ChatBox = () => {
@@ -39,8 +40,8 @@ const ChatBox = () => {
             sx={{ 
                 display: 'flex', 
                 flexDirection: 'column', 
-                height: '100vh', 
-                maxWidth: '600px', 
+                height: '80vh', 
+                maxWidth: '500px', 
                 margin: '0 auto', 
                 border: 1, 
                 borderRadius: 2, 
@@ -67,8 +68,8 @@ const ChatBox = () => {
                     placeholder="Type your message..."
                     sx={{ marginRight: 1, borderRadius: 2, fontFamily: 'Roboto, sans-serif' }}
                 />
-                <Button variant="contained" color="primary" onClick={sendMessage} sx={{ borderRadius: 2, fontFamily: 'Roboto, sans-serif' }}>
-                    Send
+                <Button variant="contained" color="primary" onClick={sendMessage} sx={{ borderRadius: 2, minWidth: '50px', padding: '10px' }}>
+                    <SendIcon />
                 </Button>
             </Box>
         </Box>
