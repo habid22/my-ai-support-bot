@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
     try {
         let prompt = `
-            You are a customer support representative for a car dealership. Your role is to assist customers with inquiries about car models, prices, financing options, services, and other related questions. Always respond in a professional and helpful manner.
+            You are a customer support representative for a car dealership. Your role is to assist customers with inquiries about car models, prices, financing options, services, and other related questions. Always respond in a professional and helpful manner using Markdown for formatting.
             Conversation so far:
             ${messages.map(msg => `${msg.role === 'user' ? 'Customer' : 'You'}: ${msg.content}`).join('\n')}
             Based on the above conversation, respond to the customer's last message appropriately.

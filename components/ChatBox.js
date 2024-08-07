@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, TextField, Button, List, ListItem, Paper, Typography } from '@mui/material';
+import { Box, TextField, Button, List, ListItem } from '@mui/material';
 import ChatMessage from './ChatMessage';
 
 const ChatBox = () => {
@@ -39,14 +39,15 @@ const ChatBox = () => {
             sx={{ 
                 display: 'flex', 
                 flexDirection: 'column', 
-                height: '70vh', 
+                height: '100vh', 
                 maxWidth: '600px', 
                 margin: '0 auto', 
                 border: 1, 
                 borderRadius: 2, 
                 overflow: 'hidden', 
                 backgroundColor: '#f5f5f5',
-                boxShadow: 3 
+                boxShadow: 3,
+                fontFamily: 'Roboto, sans-serif'
             }}
         >
             <List sx={{ flex: 1, padding: 2, overflowY: 'scroll' }}>
@@ -64,9 +65,9 @@ const ChatBox = () => {
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                     placeholder="Type your message..."
-                    sx={{ marginRight: 1, borderRadius: 2 }}
+                    sx={{ marginRight: 1, borderRadius: 2, fontFamily: 'Roboto, sans-serif' }}
                 />
-                <Button variant="contained" color="primary" onClick={sendMessage} sx={{ borderRadius: 2 }}>
+                <Button variant="contained" color="primary" onClick={sendMessage} sx={{ borderRadius: 2, fontFamily: 'Roboto, sans-serif' }}>
                     Send
                 </Button>
             </Box>
