@@ -8,7 +8,7 @@ export default function Home() {
                 <title> Customer Support AI Demo 🤖</title>
             </Head>
             <main>
-                <h1 style={{ fontSize: '2rem', margin: '20px 0' }}> Dealership Customer Support AI Demo 🤖</h1>
+                <h1 style={{ fontSize: '2rem', margin: '20px 0' }}> Dealership Support AI Demo 🤖</h1>
                 <ChatBox />
             </main>
         </div>

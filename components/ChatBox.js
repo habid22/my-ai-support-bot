@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, TextField, Button, List, ListItem } from '@mui/material';
+import { Box, TextField, Button, List, ListItem, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import ChatMessage from './ChatMessage';
 
@@ -35,26 +35,40 @@ const ChatBox = () => {
         }
     };
 
+    const endSession = () => {
+        setMessages([...messages, { role: 'system', content: 'Session Ended' }]);
+    };
+
+    const newSession = () => {
+        window.location.reload();
+    };
+
     return (
-        <Box 
-            sx={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                height: '80vh', 
-                maxWidth: '500px', 
-                margin: '0 auto', 
-                border: 1, 
-                borderRadius: 2, 
-                overflow: 'hidden', 
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: '80vh',
+                maxWidth: '500px',
+                margin: '0 auto',
+                border: 1,
+                borderRadius: 2,
+                overflow: 'hidden',
                 backgroundColor: '#f5f5f5',
                 boxShadow: 3,
-                fontFamily: 'Roboto, sans-serif'
+                fontFamily: 'Roboto, sans-serif',
             }}
         >
             <List sx={{ flex: 1, padding: 2, overflowY: 'scroll' }}>
                 {messages.map((msg, index) => (
                     <ListItem key={index} sx={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
-                        <ChatMessage message={msg} />
+                        {msg.role === 'system' ? (
+                            <Typography variant="caption" sx={{ color: '#888' }}>
+                                {msg.content}
+                            </Typography>
+                        ) : (
+                            <ChatMessage message={msg} />
+                        )}
                     </ListItem>
                 ))}
             </List>
@@ -70,6 +84,14 @@ const ChatBox = () => {
                 />
                 <Button variant="contained" color="primary" onClick={sendMessage} sx={{ borderRadius: 2, minWidth: '50px', padding: '10px' }}>
                     <SendIcon />
+                </Button>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: 1, borderTop: 1, borderColor: '#ccc', backgroundColor: '#fff' }}>
+                <Button variant="contained" color="secondary" onClick={endSession} sx={{ borderRadius: 2 }}>
+                    End Session
+                </Button>
+                <Button variant="contained" color="primary" onClick={newSession} sx={{ borderRadius: 2 }}>
+                    New Session
                 </Button>
             </Box>
         </Box>
