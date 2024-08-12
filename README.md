@@ -1,4 +1,4 @@
-# AI Customer Support Bot
+# AI Customer Support Bot 🤖
 
 This project is an AI-powered customer support bot for a car dealership, built using Next.js, Material-UI, and OpenAI (or other AI model services like Hugging Face). The bot can assist customers by providing information about various car models, answering common questions, and managing chat sessions.
 
